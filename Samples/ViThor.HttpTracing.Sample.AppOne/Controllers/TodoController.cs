@@ -9,14 +9,10 @@ namespace ViThor.HttpTracing.Sample.AppOne.Controllers;
 [ApiController]
 [Route("[controller]")]
 // ViThorControllerBase is a custom controller that inherits from ControllerBase and adds a CorrelationId property
-public class TodoController : ViThorControllerBase 
+public class TodoController : ViThorControllerBase
 {
-    private readonly HttpClient _httpClient;
-
-    public TodoController(HttpClient httpClient, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+    public TodoController(IHttpContextAccessor httpContextAccessor, HttpClient httpClient) : base(httpContextAccessor, httpClient)
     {
-        _httpClient = httpClient;
-        _httpClient.DefaultRequestHeaders.Add("X-Correlation-ID", this.CorrelationId);
     }
 
     [HttpGet]

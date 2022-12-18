@@ -9,11 +9,13 @@ namespace ViThor.HttpTracing.Controllers
     public class ViThorControllerBase : ControllerBase
     {
         protected readonly string CorrelationId;
-        // protected readonly HttpClient _httpClient;
+        protected readonly HttpClient _httpClient;
 
-        public ViThorControllerBase(IHttpContextAccessor httpContextAccessor)
+        public ViThorControllerBase(IHttpContextAccessor httpContextAccessor, HttpClient httpClient)
         {
             CorrelationId = httpContextAccessor.HttpContext.Request.GetCorrelationId();
+            _httpClient = httpClient;
+            _httpClient.DefaultRequestHeaders.Add("X-Correlation-ID", CorrelationId);
         }
     }
 }

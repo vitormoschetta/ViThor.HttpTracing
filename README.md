@@ -55,17 +55,15 @@ builder.Services.AddHttpContextAccessor();
 And, your controller needs to extend from `ViThorControllerBase`:
   
 ```csharp
-public class TodoController : ViThorControllerBase 
+public class TodoController : ViThorControllerBase
 {
-    private readonly HttpClient _httpClient;
-
-    public TodoController(HttpClient httpClient, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+    public TodoController(IHttpContextAccessor httpContextAccessor, HttpClient httpClient) : base(httpContextAccessor, httpClient)
     {
-        _httpClient = httpClient;
-        _httpClient.DefaultRequestHeaders.Add("X-Correlation-ID", this.CorrelationId);
     }
 }
 ```
+
+The `ViThorControllerBase` will retrieve the TraceID from the header and pass it to the HttpClient.
 
 
 
