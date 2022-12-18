@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ViThor.HttpTracing\ViThor.HttpTracing.csproj" />
+    <ProjectReference Include="..\..\ViThor.HttpTracing\ViThor.HttpTracing.csproj" />
+    <ProjectReference Include="..\ViThor.HttpTracing.Sample.Shared\ViThor.HttpTracing.Sample.Shared.csproj" />
   </ItemGroup>
 
 </Project>

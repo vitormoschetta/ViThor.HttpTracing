@@ -5,8 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient();
 
-// Add ViThorTraceFilter to all controllers
+// Add Suporte to HttpContextAccessor
+builder.Services.AddHttpContextAccessor();
+
+// Add ViThorTraceFilter
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<ViThorTraceFilter>();

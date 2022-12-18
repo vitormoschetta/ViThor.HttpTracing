@@ -1,4 +1,4 @@
-namespace ViThor.HttpTracing.Sample.Models
+namespace ViThor.HttpTracing.Sample.Shared.Models
 {
     public class TodoItem
     {

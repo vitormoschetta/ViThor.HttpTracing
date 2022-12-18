@@ -33,7 +33,7 @@ dotnet add package ViThor.HttpTracing
 
 ## Usage
 
-Add in `Program.cs`:  
+Add in `Program.cs`:
 
 ```csharp
 using Vithor.HttpTracing.Filters;
@@ -44,13 +44,38 @@ builder.Services.AddControllers(options =>
 });
 ```
 
+The above filter will retrieve the TraceID , log the request and the response.
+
+If your API has to pass the TraceID to another service, you also need to add the following line in `Program.cs`:
+
+```csharp
+builder.Services.AddHttpContextAccessor();
+```
+
+And, your controller needs to extend from `ViThorControllerBase`:
+  
+```csharp
+public class TodoController : ViThorControllerBase 
+{
+    private readonly HttpClient _httpClient;
+
+    public TodoController(HttpClient httpClient, IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
+    {
+        _httpClient = httpClient;
+        _httpClient.DefaultRequestHeaders.Add("X-Correlation-ID", this.CorrelationId);
+    }
+}
+```
+
+
 
 ## Sample 
 
 ### Running the sample
 
 ```bash
-dotnet run --project ViThor.HttpTracing.Sample/ViThor.HttpTracing.Sample.csproj
+dotnet run --project Samples/ViThor.HttpTracing.Sample.AppOne/ViThor.HttpTracing.Sample.AppOne.csproj
+dotnet run --project Samples/ViThor.HttpTracing.Sample.AppTwo/ViThor.HttpTracing.Sample.AppTwo.csproj
 ```
 
 ### Testing the sample
@@ -77,6 +102,8 @@ Request passing the X-Correlation-ID:
 curl --location --request GET 'http://localhost:5000/Todo' \
 --header 'X-Correlation-ID: ced6398d-36a2-4f0c-80c2-c78e91274d0d'
 ```
+
+You will be able to view the content of the HTTP request and response in both applications, with a unique TraceID.
 
 
 

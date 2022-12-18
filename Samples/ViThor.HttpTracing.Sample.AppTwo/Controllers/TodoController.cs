@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using ViThor.HttpTracing.Sample.Models;
+using ViThor.HttpTracing.Sample.Shared.Models;
 
-namespace ViThor.HttpTracing.Sample.Controllers;
+namespace ViThor.HttpTracing.Sample.AppTwo.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -15,7 +15,7 @@ public class TodoController : ControllerBase
             new TodoItem { Id = 1, Name = "Test", IsComplete = true },
             new TodoItem { Id = 2, Name = "Test2", IsComplete = false }
         };
-    }  
+    }
 
     [HttpGet("{id}")]
     public ActionResult<TodoItem> Get(int id)

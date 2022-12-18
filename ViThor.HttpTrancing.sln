@@ -5,7 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViThor.HttpTracing", "ViThor.HttpTracing\ViThor.HttpTracing.csproj", "{78A640DB-F9A6-47E7-A4A1-37E831136F72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViThor.HttpTracing.Sample", "ViThor.HttpTracing.Sample\ViThor.HttpTracing.Sample.csproj", "{EA6B947D-49C8-411F-A0DE-586E3F897553}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{820EACAC-AF91-4BDB-B224-B339F6A471D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViThor.HttpTracing.Sample.AppOne", "Samples\ViThor.HttpTracing.Sample.AppOne\ViThor.HttpTracing.Sample.AppOne.csproj", "{A4A51F64-4B4A-4C6E-83A9-10938B4F6522}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViThor.HttpTracing.Sample.Shared", "Samples\ViThor.HttpTracing.Sample.Shared\ViThor.HttpTracing.Sample.Shared.csproj", "{537F47FC-2A73-47FF-97DA-D37496DB6DF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViThor.HttpTracing.Sample.AppTwo", "Samples\ViThor.HttpTracing.Sample.AppTwo\ViThor.HttpTracing.Sample.AppTwo.csproj", "{8E495B75-522D-46BF-9439-9A082A67AFD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +26,22 @@ Global
 		{78A640DB-F9A6-47E7-A4A1-37E831136F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78A640DB-F9A6-47E7-A4A1-37E831136F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78A640DB-F9A6-47E7-A4A1-37E831136F72}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA6B947D-49C8-411F-A0DE-586E3F897553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA6B947D-49C8-411F-A0DE-586E3F897553}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA6B947D-49C8-411F-A0DE-586E3F897553}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA6B947D-49C8-411F-A0DE-586E3F897553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4A51F64-4B4A-4C6E-83A9-10938B4F6522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4A51F64-4B4A-4C6E-83A9-10938B4F6522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4A51F64-4B4A-4C6E-83A9-10938B4F6522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4A51F64-4B4A-4C6E-83A9-10938B4F6522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{537F47FC-2A73-47FF-97DA-D37496DB6DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{537F47FC-2A73-47FF-97DA-D37496DB6DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{537F47FC-2A73-47FF-97DA-D37496DB6DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{537F47FC-2A73-47FF-97DA-D37496DB6DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E495B75-522D-46BF-9439-9A082A67AFD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E495B75-522D-46BF-9439-9A082A67AFD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E495B75-522D-46BF-9439-9A082A67AFD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E495B75-522D-46BF-9439-9A082A67AFD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A4A51F64-4B4A-4C6E-83A9-10938B4F6522} = {820EACAC-AF91-4BDB-B224-B339F6A471D9}
+		{537F47FC-2A73-47FF-97DA-D37496DB6DF9} = {820EACAC-AF91-4BDB-B224-B339F6A471D9}
+		{8E495B75-522D-46BF-9439-9A082A67AFD6} = {820EACAC-AF91-4BDB-B224-B339F6A471D9}
 	EndGlobalSection
 EndGlobal
