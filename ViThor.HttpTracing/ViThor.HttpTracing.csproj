@@ -11,9 +11,9 @@
     <Company>ViThor</Company>
     <Copyright>© 2022 ViThor</Copyright>
     <Description>A small package for tracing HTTP requests between dotnet microservices.</Description>
-    <RepositoryUrl>https://github.com/vitormoschetta/ViThor.LoggingFilter</RepositoryUrl>
+    <RepositoryUrl>https://github.com/vitormoschetta/ViThor.HttpTracing</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>logging;filter;dotnet;core;aspnet;aspnetcore</PackageTags>
+    <PackageTags>trace;tracing;http-trace;trace-applications;logging;http-requests;http-responses;dotnet;core;aspnet;aspnetcore</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
