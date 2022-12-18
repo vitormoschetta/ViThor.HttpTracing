@@ -8,6 +8,13 @@ using ViThor.HttpTracing.Utils;
 
 namespace ViThor.HttpTracing.Filters
 {
+    /// <summary>
+    /// Filtro responsável por identificar o tracing da requisição (chave 'X-Correlation-ID'), fazer o logging da requisição (Username, Controller, Action, Parmams, etc), 
+    /// adicionar o tracing no cabeçalho da resposta, e fazer o logging da resposta.
+    /// <para/>
+    /// Filter responsible for identifying the request tracing (key 'X-Correlation-ID'), logging the request (Username, Controller, Action, Parmams, etc),
+    /// adding the tracing to the response header, and logging the response.    
+    /// </summary>
     public class ViThorTraceFilter : IAsyncActionFilter
     {
         private readonly ILogger<ViThorTraceFilter> _logger;
@@ -40,7 +47,7 @@ namespace ViThor.HttpTracing.Filters
                 CorrelationId = loggingRequestModel.CorrelationId,
                 Username = loggingRequestModel.Username,
                 Controller = loggingRequestModel.Controller,
-                Action = loggingRequestModel.Action                
+                Action = loggingRequestModel.Action
             };
 
             var objectResult = resultnext.Result as ObjectResult;

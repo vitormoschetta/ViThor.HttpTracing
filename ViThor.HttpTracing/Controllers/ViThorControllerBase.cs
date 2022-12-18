@@ -5,6 +5,11 @@ using ViThor.HttpTracing.Extensions;
 
 namespace ViThor.HttpTracing.Controllers
 {
+    /// <summary>
+    /// Controlador base que adiciona uma propriedade 'X-Correlation-ID' no cabeçalho da instância HttpClient com o valor do tracing. 
+    /// <para/>
+    /// Base controller that adds an 'X-Correlation-ID' property in the header of the HttpClient instance with the tracing value.
+    /// </summary>
     [ApiController]
     public class ViThorControllerBase : ControllerBase
     {

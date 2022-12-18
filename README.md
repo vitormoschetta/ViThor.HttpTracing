@@ -19,7 +19,7 @@ info: Vithor.Filters.LoggingFilter[0]
 
 `[ced6398d-36a2-4f0c-80c2-c78e91274d0d]` is a tracking code that can be received in the header with the term `X-Correlation-ID`.
 
-If an `X-Correlation-ID` is not passed then this library will generate a random value to track request and response.
+If an `X-Correlation-ID` is not received in the HTTP header, this library will generate a random value to pass along to other services (if needed) and track the response with the same ID.
 
 
 ## Installation
@@ -33,15 +33,19 @@ dotnet add package ViThor.HttpTracing
 
 ## Usage
 
-Add in `Program.cs`:
+Update line `builder.Services.AddControllers();` in `Program.cs` to:
 
 ```csharp
-using Vithor.HttpTracing.Filters;
-
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<ViThorTraceFilter>();
 });
+```
+
+Add reference to `ViThorTraceFilter`:
+  
+```csharp
+using Vithor.HttpTracing.Filters;
 ```
 
 The above filter will retrieve the TraceID , log the request and the response.
@@ -50,6 +54,7 @@ If your API has to pass the TraceID to another service, you also need to add the
 
 ```csharp
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient();
 ```
 
 And, your controller needs to extend from `ViThorControllerBase`:
@@ -63,8 +68,9 @@ public class TodoController : ViThorControllerBase
 }
 ```
 
-The `ViThorControllerBase` will retrieve the TraceID from the header and pass it to the HttpClient.
+The `ViThorControllerBase` will retrieve the `X-Correlation-ID` and set it in the header of your HttpClient instance.
 
+The `CorrelationId` property of `ViThorControllerBase` contains the value of `X-Correlation-ID`, and can be used to log the TraceID value in any point of your code.
 
 
 ## Sample 
@@ -101,7 +107,7 @@ curl --location --request GET 'http://localhost:5000/Todo' \
 --header 'X-Correlation-ID: ced6398d-36a2-4f0c-80c2-c78e91274d0d'
 ```
 
-You will be able to view the content of the HTTP request and response in both applications, with a unique TraceID.
+You will be able to see, in the logs of both applications, the same identifier (Guid), as well as the content of the HTTP request and response.
 
 
 
