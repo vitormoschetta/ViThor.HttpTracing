@@ -1,4 +1,4 @@
-# LoggingFilter
+# ViThor HTTP Tracing
 
 A small package for tracing HTTP requests between dotnet microservices.
 
@@ -63,9 +63,21 @@ The sample project has Swagger configured. To access it, run the API and access 
 http://localhost:5000/swagger/index.html
 ```
 
-#### Postman
+#### Curl
 
-The example project has a Postman collection that can be used to test endpoints. To use it, import the collections from the `Postman` folder into Postman and run the requests.
+Request without passing the X-Correlation-ID:
+
+```bash
+curl --location --request GET 'http://localhost:5000/Todo'
+```
+
+Request passing the X-Correlation-ID:
+
+```bash
+curl --location --request GET 'http://localhost:5000/Todo' \
+--header 'X-Correlation-ID: ced6398d-36a2-4f0c-80c2-c78e91274d0d'
+```
+
 
 
 ## Contributing
