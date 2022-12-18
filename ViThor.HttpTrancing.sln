@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViThor.HttpTracing", "ViThor.HttpTracing\ViThor.HttpTracing.csproj", "{78A640DB-F9A6-47E7-A4A1-37E831136F72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViThor.HttpTracing.Sample", "ViThor.HttpTracing.Sample\ViThor.HttpTracing.Sample.csproj", "{EA6B947D-49C8-411F-A0DE-586E3F897553}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78A640DB-F9A6-47E7-A4A1-37E831136F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A640DB-F9A6-47E7-A4A1-37E831136F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A640DB-F9A6-47E7-A4A1-37E831136F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A640DB-F9A6-47E7-A4A1-37E831136F72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6B947D-49C8-411F-A0DE-586E3F897553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6B947D-49C8-411F-A0DE-586E3F897553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6B947D-49C8-411F-A0DE-586E3F897553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6B947D-49C8-411F-A0DE-586E3F897553}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
