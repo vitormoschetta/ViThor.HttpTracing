@@ -24,7 +24,7 @@ namespace ViThor.HttpTracing.Models
 
         public override string ToString()
         {
-            return $"[{CorrelationId}] Request from {User} to {Controller}/{Action} with query parameters: [{QueryParameters}] and arguments: {Arguments}";
+            return $"{CorrelationId} Request from {User} to {Controller}/{Action} with query parameters: [{QueryParameters}] and arguments: {Arguments}";
         }
 
         public string ToJson()
@@ -41,7 +41,7 @@ namespace ViThor.HttpTracing.Models
 
         public override string ToString()
         {
-            return $"[{CorrelationId}] Response from {User} to {Controller}/{Action} with result: {Result}";
+            return $"{CorrelationId} Response from {User} to {Controller}/{Action} with result: {Result}";
         }
 
         public string ToJson()

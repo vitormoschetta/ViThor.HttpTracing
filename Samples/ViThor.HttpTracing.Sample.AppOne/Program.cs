@@ -1,4 +1,5 @@
 using ViThor.HttpTracing.Filters;
+using ViThor.HttpTracing.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Add ViThorExceptionHandlingMiddleware (optional)
+app.UseMiddleware<ViThorExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

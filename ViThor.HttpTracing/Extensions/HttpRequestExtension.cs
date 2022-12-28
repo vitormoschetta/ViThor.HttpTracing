@@ -9,31 +9,30 @@ namespace ViThor.HttpTracing.Extensions
 
         public static string GetCorrelationId(this ActionExecutingContext request)
         {
+            if (request.HttpContext.TraceIdentifier.Contains("->"))
+                return request.HttpContext.TraceIdentifier;
 
-            var correlationId = request?.HttpContext?.Request?.Headers[CorrelationAttributeName].ToString();
+            var callerTraceId = request.HttpContext.Request.Headers[CorrelationAttributeName].ToString() ?? string.Empty;
+            var receiverTraceId = request.HttpContext.TraceIdentifier;
+            var correlationId = $"[{callerTraceId}] -> [{receiverTraceId}]";
 
-            if (string.IsNullOrEmpty(correlationId))
-            {
-                correlationId = createCorrelationId();
-                request?.HttpContext.Request.Headers.Add(CorrelationAttributeName, correlationId);
-            }
+            request.HttpContext.TraceIdentifier = correlationId;
 
             return correlationId;
         }
 
         public static string GetCorrelationId(this HttpRequest request)
         {
-            var correlationId = request?.Headers[CorrelationAttributeName].ToString();
+            if (request.HttpContext.TraceIdentifier.Contains("->"))
+                return request.HttpContext.TraceIdentifier;
 
-            if (string.IsNullOrEmpty(correlationId))
-            {
-                correlationId = createCorrelationId();
-                request?.Headers.Add(CorrelationAttributeName, correlationId);
-            }
+            var callerTraceId = request.HttpContext.Request.Headers[CorrelationAttributeName].ToString() ?? string.Empty;
+            var receiverTraceId = request.HttpContext.TraceIdentifier;
+            var correlationId = $"[{callerTraceId}] -> [{receiverTraceId}]";
+
+            request.HttpContext.TraceIdentifier = correlationId;
 
             return correlationId;
         }
-
-        private static string createCorrelationId() => System.Guid.NewGuid().ToString();
     }
 }
