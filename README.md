@@ -73,6 +73,14 @@ The `ViThorControllerBase` will retrieve the `X-Correlation-ID` and set it in th
 The `CorrelationId` property of `ViThorControllerBase` contains the value of `X-Correlation-ID`, and can be used to log the TraceID value in any point of your code.
 
 
+#### Add Exception Handling Middleware for return the TraceID in the body of the response (optional)
+
+Add the following line in `Program.cs`:
+
+```csharp
+app.UseMiddleware<ViThorExceptionHandlingMiddleware>();
+```
+
 ## Sample 
 
 ### Running the sample
