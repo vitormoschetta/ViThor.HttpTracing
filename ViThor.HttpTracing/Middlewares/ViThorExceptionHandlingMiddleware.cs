@@ -40,7 +40,7 @@ namespace ViThor.HttpTracing.Middlewares
                 new
                 {
                     error = exception.Message,
-                    traceID = context.TraceIdentifier
+                    traceId = context.TraceIdentifier
                 }
             );
 

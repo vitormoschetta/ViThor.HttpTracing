@@ -22,6 +22,12 @@ public class TodoController : ViThorControllerBase
 
         var response = await _httpClient.GetAsync("http://localhost:5002/todo");
         var content = await response.Content.ReadAsStringAsync();
+
+        if (response.StatusCode != System.Net.HttpStatusCode.OK)
+        {
+            return BadRequest(content);
+        }
+
         var items = JsonManagerSerialize.Deserialize<IEnumerable<TodoItem>>(content);
         return items.ToList();
     }
@@ -46,6 +52,30 @@ public class TodoController : ViThorControllerBase
         var response = await _httpClient.PostAsync("http://localhost:5002/todo", new StringContent(content, Encoding.UTF8, "application/json"));
         var responseContent = await response.Content.ReadAsStringAsync();
         var item = JsonManagerSerialize.Deserialize<TodoItem>(responseContent);
+        return item;
+    }
+
+
+    [HttpPost("test-exception")]
+    public async Task<ActionResult<TodoItem>> PostException(TodoItem todoItem)
+    {
+        Console.WriteLine($"TraceID: {CorrelationId}");
+
+        var content = JsonManagerSerialize.Serialize(todoItem);
+        var response = await _httpClient.PostAsync("http://localhost:5002/todo/test-exception", new StringContent(content, Encoding.UTF8, "application/json"));
+        var responseContent = await response.Content.ReadAsStringAsync();
+
+        switch (response.StatusCode)
+        {
+            case System.Net.HttpStatusCode.OK:
+                break;
+            case System.Net.HttpStatusCode.InternalServerError:
+                return StatusCode(StatusCodes.Status500InternalServerError, responseContent ?? content);
+            default:
+                return BadRequest(responseContent);
+        }
+
+        var item = JsonManagerSerialize.Deserialize<TodoItem>(responseContent ?? content);
         return item;
     }
 }
