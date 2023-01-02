@@ -21,6 +21,7 @@ namespace ViThor.HttpTracing.Controllers
             CorrelationId = httpContextAccessor.HttpContext.Request.GetCorrelationId();
             _httpClient = httpClient;
             _httpClient.DefaultRequestHeaders.Add("X-Correlation-ID", CorrelationId);
+            httpContextAccessor.HttpContext.TraceIdentifier = CorrelationId;
         }
     }
 }

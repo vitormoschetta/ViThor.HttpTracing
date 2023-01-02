@@ -28,4 +28,10 @@ public class TodoController : ControllerBase
     {
         return todoItem;
     }
+
+    [HttpPost("test-exception")]
+    public ActionResult<TodoItem> PostException(TodoItem todoItem)
+    {
+        throw new Exception("Test exception App Two");
+    }
 }
